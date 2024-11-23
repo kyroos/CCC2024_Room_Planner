@@ -191,28 +191,28 @@ If either the width or length is odd, split off the corresponding side
 
 ```python
     # Set a threshold to determine when to apply a greedy split for the room
-limit = length * 4 + 4
-
-if height > limit and width % 2 == 1:
-    best = solve(r1, c1, r1 + length, c2, length) + solve(r1 + length + 1, c1, r2, c2, length)
-elif width > limit and height % 2 == 1:
-    best = solve(r1, c1, r2, c1 + length, length) + solve(r1, c1 + length + 1, r2, c2, length)
+    limit = length * 4 + 4
+    
+    if height > limit and width % 2 == 1:
+        best = solve(r1, c1, r1 + length, c2, length) + solve(r1 + length + 1, c1, r2, c2, length)
+    elif width > limit and height % 2 == 1:
+        best = solve(r1, c1, r2, c1 + length, length) + solve(r1, c1 + length + 1, r2, c2, length)
 ```
 
 If both the width and length are even, extract one spiral. Why does it matter if it's even or odd? Think about it—you’ll figure it out!
 
 ```python
     elif height > limit and width > limit:
-rl = r1 + length
-cu = c2 - length - 1
-rr = r2 - length - 1
-cd = c1 + length
-
-best = solve(r1, c1, rl, cu, length)
-best += solve(r1, cu + 1, rr, c2, length)
-best += solve(rr + 1, cd + 1, r2, c2, length)
-best += solve(rl + 1, c1, r2, cd, length)
-best += solve(rl + 1, cd + 1, rr, cu, length)
+        rl = r1 + length
+        cu = c2 - length - 1
+        rr = r2 - length - 1
+        cd = c1 + length
+        
+        best = solve(r1, c1, rl, cu, length)
+        best += solve(r1, cu + 1, rr, c2, length)
+        best += solve(rr + 1, cd + 1, r2, c2, length)
+        best += solve(rl + 1, c1, r2, cd, length)
+        best += solve(rl + 1, cd + 1, rr, cu, length)
 ```
 
 > The total runtime for all five input files across Levels 4 to 7 is under one minute in Python
