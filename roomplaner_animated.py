@@ -195,6 +195,10 @@ def solve(r1, c1, r2, c2, length):
         print(f"## Memoize {height}x{width}-{length}")
         print_grid(construct_grid(width, height, memo[key]))
 
+    if animation_speed > 0:
+        print (f"working memoize size: {len(memo)}")
+        sys.stdout.write(f"\033[{1}A")
+
     return best
 
 
@@ -235,6 +239,7 @@ def solve_file(my_input, level):
             for pos in range(len(occupied_positions)):
                 r, c, typ = occupied_positions[pos]
                 if typ == "desk":
+                    sys.stdout.write(f"\033[{rows + 4}A")  # Move cursor up
                     print(f"Solve {level} room size: {columns}x{rows} desk length: {length}\n", flush=False)
                     grid = construct_grid(columns, rows, occupied_positions[:pos + 1])
                     print_grid(grid)
@@ -242,7 +247,6 @@ def solve_file(my_input, level):
                         print(f"placed {count_desks(occupied_positions[:pos + 1])} cells")
                     else:
                         print(f"placed {count_desks(occupied_positions[:pos + 1]) // length} desks")
-                    sys.stdout.write(f"\033[{rows + 4}A")  # Move cursor up
                     sys.stdout.flush()
                     time.sleep(animation_speed / 1_000)
             sys.stdout.flush()
