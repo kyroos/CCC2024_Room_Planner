@@ -1,7 +1,7 @@
 # Room Planner - solution for level 4, 5, 6 and 7
 
 ### What's the Challenge?
-Imagine you have a big, empty rectangular room and a bunch of different-sized desks. These desks can be long, ranging from 1×2 to 1×7 blocks. Your mission is to place as many desks as you can in the room, but there’s a rule: no two desks can be next to each other, not even at the corners. The Room Planner puzzle is a great way to boost your problem-solving skills.
+Imagine you have a big, empty rectangular room and a bunch of different-sized desks. These desks can be long, ranging from 1×2 to 1×7 blocks. Your mission is to place as many desks as you can in the room, but there’s a rule: no two desks can be next to each other, not even at the corners. The Room Planner puzzle is a great way to boost your problem-solving skills. For more details, visit https://catcoder.codingcontest.org/
 
 ### Curious about how the algorithm works? Watch this video!
 [See how the algorithm works – watch now!](https://www.youtube.com/watch?v=_699KQQofv8)
@@ -37,7 +37,7 @@ def solve(r1, c1, r2, c2, length):
 Base Case for Level 4,5 and 6
 
 ```python
-    # Resolving the Base Case for Level 4,5 and 6
+# Resolving the Base Case for Level 4,5 and 6
 if (height == 1 and width < length) or (width == 1 and height < length):
     # The room is too small, no desk can be placed
     return []
@@ -49,7 +49,6 @@ if (height == 1 and width == length) or (width == 1 and height == length):
 Base Case for Level 7
 
 ```python
-
 # Resolving the Base Case for Level 7
 if (height == 1 and width <= length) or (width == 1 and height <= length):
     return [(r, c) for r in range(r1, r2) for c in range(c1, c2)]
@@ -83,8 +82,8 @@ for split_row in range(r1 + 1, r2):
     if len(candidate) > len(best):
         best = candidate
 
+        
 # Splitting vertically at every possible column
-
 
 #    split_col
 # ......@........... 2 Vertical Split
@@ -108,6 +107,7 @@ for split_col in range(c1 + 1, c2):
     if len(candidate) > len(best):
         best = candidate
 
+        
 # Split spiral at every possible position
 
 #     r1/c1      r1/cu r1/c2
@@ -135,7 +135,6 @@ for split_col in range(c1 + 1, c2):
 #       ......@...........
 #     r2/c1 r2/cd      r2/c2
 
-
 for rl in range(r1, r2):
     for cu in range(c1, c2):
         for rr in range(rl + 1, r2):
@@ -155,7 +154,7 @@ for rl in range(r1, r2):
 return best
 ```
 
-That's it! Realy, the algorithm is complete. Now it's all about improving the runtime to make it faster. Right now, it’s far too slow, and we need to push its performance to the next level! Let’s get started. Look, it’s easy!
+That's it! Really, the algorithm is complete. Now it's all about improving the runtime to make it faster. Right now, it’s far too slow, and we need to push its performance to the next level! Let’s get started. Look, it’s easy!
 
 
 ### II) Smart Memory - Dynamic Programming using memoization
